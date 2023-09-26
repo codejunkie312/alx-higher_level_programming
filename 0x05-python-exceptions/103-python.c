@@ -93,10 +93,10 @@ void print_python_float(PyObject *p)
 		return;
 	}
 	val = ((PyFloatObject *)p)->ob_fval;
-	sprintf(buffer, "%lf", val);
+	snprintf(buffer, sizeof(buffer), "%.16g", val);
 
 	if (strchr(buffer, '.') == NULL)
-		printf("  value: %s.0\n", buffer);
-	else
-		printf("  value: %s\n", buffer);
+		strcat(buffer, ".0");
+
+	printf("  value: %s\n", buffer);
 }
