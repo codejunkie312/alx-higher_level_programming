@@ -83,20 +83,11 @@ void print_python_list(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	double val;
-	char buffer[100];
-
 	printf("[.] float object info\n");
 	if (!PyFloat_Check(p))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	val = ((PyFloatObject *)p)->ob_fval;
-	snprintf(buffer, sizeof(buffer), "%.16g", val);
-
-	if (strchr(buffer, '.') == NULL)
-		strcat(buffer, ".0");
-
-	printf("  value: %s\n", buffer);
+	printf("  value: %g\n", ((PyFloatObject *)(p))->ob_fval);
 }
