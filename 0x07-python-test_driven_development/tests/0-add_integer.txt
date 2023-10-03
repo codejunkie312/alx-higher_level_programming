@@ -35,3 +35,11 @@ TypeError: a must be an integer
 1000000000
 >>> add_integer(-999999999, -1)
 -1000000000
+>>> add_integer(999999999999999999999999999999, 1)
+1000000000000000000000000000000
+>>> docs = __import__("0-add_integer").__doc__
+>>> len(docs) > 1
+True
+>>> docs = __import__("0-add_integer").add_integer.__doc__
+>>> len(docs) > 1
+True
