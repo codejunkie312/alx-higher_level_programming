@@ -1,0 +1,82 @@
+# Importing the matrix_divided function from module 2-matrix_divided
+>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+# Test with division by 1
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 1)
+[[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+# Test with division by 10
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 10)
+[[0.1, 0.2, 0.3], [0.4, 0.5, 0.6]]
+
+# Test with division by 100
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 100)
+[[0.01, 0.02, 0.03], [0.04, 0.05, 0.06]]
+
+# Test with division by 1000
+>>> matrix_divided([[1, 2, 3], [4, 5, 6]], 1000)
+[[0.0, 0.0, 0.0], [0.0, 0.01, 0.01]]
+
+# Test with division by -1
+>>> matrix_divided([[-1, 2, -3], [-4, 5, -6], [-7, 8, -9]], -1)
+[[1.0, -2.0, 3.0], [4.0, -5.0, 6.0], [7.0, -8.0, 9.0]]
+
+# Test with division by 1.2
+>>> matrix_divided([[1.2, 2.2, 3.2], [4.2, 5.2, 6.2]], 1.2)
+[[1.0, 1.83, 2.67], [3.5, 4.33, 5.17]]
+
+# Test with None values, should raise TypeError
+>>> matrix_divided(None, None)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test with a set, should raise TypeError
+>>> matrix_divided({9, 8, 7}, 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test with a list containing None, should raise TypeError
+>>> matrix_divided([None], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test with a list containing a string, should raise TypeError
+>>> matrix_divided(["string"], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+>>> matrix_divided([["string"], ["here"]], 2)
+Traceback (most recent call last):
+...
+TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+# Test with a matrix of inconsistent row sizes, should raise TypeError
+>>> matrix_divided([[1, 2, 3], [4, 8, 7, 9], [2]], 1.5)
+Traceback (most recent call last):
+...
+TypeError: Each row of the matrix must have the same size
+
+# Test division by zero, should raise ZeroDivisionError
+>>> matrix_divided([[1, 2, 3], [5, 6, 7]], 0)
+Traceback (most recent call last):
+...
+ZeroDivisionError: division by zero
+
+# Test with div as a string, should raise TypeError
+>>> matrix_divided([[1, 2, 3], [5, 6, 7]], "25")
+Traceback (most recent call last):
+...
+TypeError: div must be a number
+
+# Check that the module has documentation
+>>> docs = __import__("2-matrix_divided").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the function itself has documentation
+>>> docs = __import__("2-matrix_divided").matrix_divided.__doc__
+>>> len(docs) > 1
+True
