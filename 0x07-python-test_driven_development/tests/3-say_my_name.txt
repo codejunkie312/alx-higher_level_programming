@@ -1,0 +1,50 @@
+# Importing say_my_name function
+>>> say_my_name = __import__('3-say_my_name').say_my_name
+
+# Testing with a first_name and last_name
+>>> say_my_name("Anas", "Sahimi")
+My name is Anas Sahimi
+
+# Testing with first name only
+>>> say_my_name("Anas")
+My name is Anas 
+
+# Testing with no arguments
+>>> say_my_name()
+Traceback (most recent call last):
+...
+TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+
+# Testing with first name not string
+>>> say_my_name(4)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Testing Both args as not string
+>>> say_my_name(4, 3)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Testing with None
+>>> say_my_name(None)
+Traceback (most recent call last):
+...
+TypeError: first_name must be a string
+
+# Testing with last_name non string
+>>> say_my_name("Anas", [2])
+Traceback (most recent call last):
+...
+TypeError: last_name must be a string
+
+# Check that the module has documentation
+>>> docs = __import__("2-matrix_divided").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the function itself has documentation
+>>> docs = __import__("2-matrix_divided").matrix_divided.__doc__
+>>> len(docs) > 1
+True
