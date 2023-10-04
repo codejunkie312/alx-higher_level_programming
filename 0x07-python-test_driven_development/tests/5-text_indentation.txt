@@ -1,0 +1,111 @@
+# Importing say_my_name function
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# Testing using a special characters at end
+>>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.""")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE> 
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+<BLANKLINE>
+Si id dicis, vicimus.
+<BLANKLINE>
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+<BLANKLINE>
+Sin aliud quid voles, postea.
+<BLANKLINE>
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+<BLANKLINE>
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres.
+<BLANKLINE>
+
+# Testing with no special character at the end of text
+>>> text_indentation("""Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quonam modo? Utrum igitur tibi litteram videor an totas paginas commovere? Non autem hoc: igitur ne illud quidem. Fortasse id optimum, sed ubi illud: Plus semper voluptatis? Teneo, inquit, finem illi videri nihil dolere. Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens. Si id dicis, vicimus. Inde sermone vario sex illa a Dipylo stadia confecimus. Sin aliud quid voles, postea. Quae animi affectio suum cuique tribuens atque hanc, quam dico. Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres""")
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+<BLANKLINE>
+Quonam modo?
+<BLANKLINE>
+Utrum igitur tibi litteram videor an totas paginas commovere?
+<BLANKLINE>
+Non autem hoc:
+<BLANKLINE>
+igitur ne illud quidem.
+<BLANKLINE>
+Fortasse id optimum, sed ubi illud:
+<BLANKLINE>
+Plus semper voluptatis?
+<BLANKLINE>
+Teneo, inquit, finem illi videri nihil dolere.
+<BLANKLINE>
+Transfer idem ad modestiam vel temperantiam, quae est moderatio cupiditatum rationi oboediens.
+<BLANKLINE>
+Si id dicis, vicimus.
+<BLANKLINE>
+Inde sermone vario sex illa a Dipylo stadia confecimus.
+<BLANKLINE>
+Sin aliud quid voles, postea.
+<BLANKLINE>
+Quae animi affectio suum cuique tribuens atque hanc, quam dico.
+<BLANKLINE>
+Utinam quidem dicerent alium alio beatiorem! Iam ruinas videres
+
+# Testing for multiple spaces after special character
+>>> text_indentation("   Hello.  Anas?   ")
+Hello.
+<BLANKLINE>
+Anas?
+<BLANKLINE>
+
+# Testing only special characters
+>>> text_indentation(" . ? : ")
+.
+<BLANKLINE>
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+
+# Testing with one word
+>>> text_indentation("Hello")
+Hello
+
+# Testing for new lines
+>>> text_indentation(" \n Hello. Whatcha up to?")
+<BLANKLINE>
+Hello.
+<BLANKLINE>
+Whatcha up to?
+<BLANKLINE>
+>>> text_indentation("Hello \n . How are you?")
+Hello 
+.
+<BLANKLINE>
+How are you?
+<BLANKLINE>
+>>> text_indentation("Hello, how are you?\n")
+Hello, how are you?
+<BLANKLINE>
+<BLANKLINE>
+
+# Check that the module has documentation
+>>> docs = __import__("5-text_indentation").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the function itself has documentation
+>>> docs = __import__("5-text_indentation").text_indentation.__doc__
+>>> len(docs) > 1
+True
