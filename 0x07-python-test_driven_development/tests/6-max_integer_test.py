@@ -3,6 +3,7 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """A class to test the max_integer function."""
 
@@ -28,10 +29,11 @@ class TestMaxInteger(unittest.TestCase):
     def test_function_docstring(self):
         """Test that the function has a docstring."""
         self.assertIsNotNone(max_integer.__doc__)
-    
+
     def test_function_docstring(self):
         """Test that the module has a docstring."""
         self.assertIsNotNone(__import__('6-max_integer').__doc__)
+
 
 if __name__ == '__main__':
     unittest.main()
