@@ -1,0 +1,97 @@
+# Importing say_my_name function
+>>> matrix_mul = __import__('100-matrix_mul').matrix_mul
+
+# Some Cases
+>>> matrix_mul([[1, 2], [3, 4]], [[5, 6], [7, 8]])
+[[19, 22], [43, 50]]
+
+# Test Empty
+>>> matrix_mul([[]], [[]])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+>>> matrix_mul([[1, 2], [3, 4]], [])
+Traceback (most recent call last):
+...
+ValueError: m_b can't be empty
+>>> matrix_mul([], [])
+Traceback (most recent call last):
+...
+ValueError: m_a can't be empty
+
+# Testing m_a not a list
+>>> matrix_mul(9, [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list
+
+# Testing m_b not a list
+>>> matrix_mul([[1, 2], [3, 4]], 9)
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list
+
+# Testing for list of lists m_a
+>>> matrix_mul([1, 2, 3, 4], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a must be a list of lists
+
+# Testing for list of lists m_b
+>>> matrix_mul([[1, 2], [3, 4]], [1, 2, 3, 4])
+Traceback (most recent call last):
+...
+TypeError: m_b must be a list of lists
+
+# Testing for values Type
+>>> matrix_mul([[1, 2], ["Anas", 4]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_a should contain only integers or floats
+>>> matrix_mul([[1, 2], [3, 4]], [[1, "Sahimi"], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: m_b should contain only integers or floats
+
+# Testing for size
+>>> matrix_mul([[1, 2], [3]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_a must be of the same size
+>>> matrix_mul([[1, 2], [3, 4]], [[1], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_b must be of the same size
+>>> matrix_mul([[1, 2], [3]], [[1], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: each row of m_a must be of the same size
+>>> matrix_mul([[1, 2], [3, 4]], [[1, 2], [3, 4], [5, 6]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+>>> matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+ValueError: m_a and m_b can't be multiplied
+
+# Testing Argument placement
+>>> matrix_mul()
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 2 required positional arguments: 'm_a' and 'm_b'
+
+>>> matrix_mul([[1, 2], [3, 4]])
+Traceback (most recent call last):
+...
+TypeError: matrix_mul() missing 1 required positional argument: 'm_b'
+
+# Check that the module has documentation
+>>> docs = __import__("100-matrix_mul").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the function itself has documentation
+>>> docs = __import__("100-matrix_mul").matrix_mul.__doc__
+>>> len(docs) > 1
+True
