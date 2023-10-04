@@ -1,0 +1,79 @@
+# Importing say_my_name function
+>>> print_square = __import__('4-print_square').print_square
+
+# Testing with no args
+>>> print_square()
+Traceback (most recent call last):
+...
+TypeError: print_square() missing 1 required positional argument: 'size'
+
+# Testing with more args than defined
+>>> print_square(1, 2)
+Traceback (most recent call last):
+...
+TypeError: print_square() takes 1 positional argument but 2 were given
+
+# Testing with passing None as arg
+>>> print_square(None)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# Testing with positive integers
+>>> print_square(4)
+####
+####
+####
+####
+>>> print_square(10)
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+##########
+>>> print_square(0)
+>>> print_square(1)
+#
+
+# Testing with negative integers
+>>> print_square(-1)
+Traceback (most recent call last):
+...
+ValueError: size must be >= 0
+
+# Testing with non integers
+>>> print_square((1,))
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square("Anas")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square(True)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square(1.0)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+>>> print_square(-5.5)
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
+# Check that the module has documentation
+>>> docs = __import__("4-print_square").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the function itself has documentation
+>>> docs = __import__("4-print_square").print_square.__doc__
+>>> len(docs) > 1
+True

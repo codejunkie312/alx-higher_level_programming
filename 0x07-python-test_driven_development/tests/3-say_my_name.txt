@@ -40,11 +40,11 @@ Traceback (most recent call last):
 TypeError: last_name must be a string
 
 # Check that the module has documentation
->>> docs = __import__("2-matrix_divided").__doc__
+>>> docs = __import__("3-say_my_name").__doc__
 >>> len(docs) > 1
 True
 
 # Check that the function itself has documentation
->>> docs = __import__("2-matrix_divided").matrix_divided.__doc__
+>>> docs = __import__("3-say_my_name").say_my_name.__doc__
 >>> len(docs) > 1
 True
