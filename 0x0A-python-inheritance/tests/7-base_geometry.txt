@@ -1,0 +1,41 @@
+# Importing class BaseGeometry
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# Check area function
+>>> bg = BaseGeometry()
+>>> bg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+# Check integer_validator function
+>>> bg.integer_validator("integer", 4)
+
+>>> bg.integer_validator("integer", "4")
+Traceback (most recent call last):
+...
+TypeError: integer must be an integer
+
+>>> bg.integer_validator("integer", -1)
+Traceback (most recent call last):
+...
+ValueError: integer must be greater than 0
+
+# Check that the module has documentation
+>>> docs = __import__("7-base_geometry").__doc__
+>>> len(docs) > 1
+True
+
+# Check that the class itself has documentation
+>>> docs = __import__("7-base_geometry").BaseGeometry.__doc__
+>>> len(docs) > 1
+True
+
+# Check that the class functions have documentation
+>>> docs = __import__("7-base_geometry").BaseGeometry.area.__doc__
+>>> len(docs) > 1
+True
+
+>>> docs = __import__("7-base_geometry").BaseGeometry.integer_validator.__doc__
+>>> len(docs) > 1
+True
