@@ -36,8 +36,6 @@ try:
             status_code = split_line[-2]
             if status_code in status_code_counts.keys():
                 status_code_counts[status_code] += 1
-            else:
-                status_code_counts[status_code] = 1
             if line_count % 10 == 0:
                 print_stats(total_size, status_code_counts)
         except Exception:
