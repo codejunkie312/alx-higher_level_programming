@@ -5,6 +5,9 @@ import pycodestyle
 
 
 class TestDocstrings(unittest.TestCase):
+    def setUp(self):
+        os.chdir(".")
+
     def test_docstrings(self):
         for filename in os.listdir("."):
             if filename.endswith(".py"):
@@ -25,3 +28,4 @@ class TestCodeStyle(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+    

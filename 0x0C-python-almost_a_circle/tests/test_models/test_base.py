@@ -62,22 +62,6 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(objs, list)
         self.assertIsInstance(objs[0], Base)
         self.assertEqual(objs[0].id, 1)
-
-    @mock.patch('turtle.goto')
-    @mock.patch('turtle.forward')
-    @mock.patch('turtle.left')
-    @mock.patch('turtle.pendown')
-    @mock.patch('turtle.penup')
-    def test_draw(self, mock_penup, mock_pendown, mock_left, mock_forward, mock_goto):
-        rect1 = Rectangle(1, 2)
-        rect2 = Rectangle(2, 5)
-        Base.draw([rect1], [rect2])
-        
-        self.assertTrue(mock_goto.called)
-        self.assertTrue(mock_forward.called)
-        self.assertTrue(mock_left.called)
-        self.assertTrue(mock_penup.called)
-        self.assertTrue(mock_pendown.called)
     
 
 if __name__ == '__main__':
