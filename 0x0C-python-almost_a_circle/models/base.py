@@ -108,10 +108,10 @@ class Base:
         if list_objs is not None:
             for obj in list_objs:
                 new_list.append(obj.to_dictionary())
-        with open(filename, "w") as f:
-            csv_writer = csv.writer(f)
-            csv_writer.writerow(new_list[0].keys())
-            csv_writer.writerows([d.values() for d in new_list])
+            with open(filename, "w") as f:
+                csv_writer = csv.writer(f)
+                csv_writer.writerow(new_list[0].keys())
+                csv_writer.writerows([d.values() for d in new_list])
 
     @classmethod
     def load_from_file_csv(cls):
