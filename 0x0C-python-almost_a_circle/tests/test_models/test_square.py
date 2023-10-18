@@ -1,11 +1,37 @@
 import unittest
 from models.square import Square
+import os
 
 class TestSquar_init(unittest.TestCase):
     """Unit tests for testing instantiation of the Square class."""
     def test_no_arg(self):
         with self.assertRaises(TypeError):
             s = Square()
+
+    def test_wrong_arg(self):
+        with self.assertRaises(TypeError):
+            s = Square("1")
+        
+        with self.assertRaises(TypeError):
+            s = Square(1, "2")
+        
+        with self.assertRaises(TypeError):
+            s = Square(1, 2, "3")
+        
+        with self.assertRaises(TypeError):
+            s = Square(1, 2, 3, "4")
+        
+        with self.assertRaises(ValueError):
+            s = Square(-1)
+        
+        with self.assertRaises(ValueError):
+            s = Square(0)
+        
+        with self.assertRaises(ValueError):
+            s = Square(1, -2)
+        
+        with self.assertRaises(ValueError):
+            s = Square(1, 2, -3)
     
     def test_one_arg(self):
         s1 = Square(2)
@@ -216,4 +242,75 @@ class TestSquare_str(unittest.TestCase):
     def test_str_extra_args(self):
         with self.assertRaises(TypeError):
             s = Square(1, 2, 3, 4, 5)
+
+class TestSquare_create(unittest.TestCase):
+    """Unit tests for testing create method of Square class."""
+    def test_create(self):
+        s1 = Square(1, 2, 3, 4)
+        s1_dictionary = s1.to_dictionary()
+        s2 = Square.create(**s1_dictionary)
+        self.assertEqual(str(s1), str(s2))
+
+class TestSquare_save_to_file(unittest.TestCase):
+    """Unit tests for testing save_to_file method of Square class."""
+    def test_save_to_file(self):
+        s1 = Square(1, 2, 3, 4)
+        s2 = Square(2, 3, 4, 5)
+        Square.save_to_file([s1, s2])
+        with open("Square.json", "r") as file:
+            self.assertEqual(len(file.read()), 76)
+    
+    def test_save_to_file_empty(self):
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+    
+    def test_save_to_file_None(self):
+        Square.save_to_file(None)
+        with open("Square.json", "r") as file:
+            self.assertEqual(file.read(), "[]")
+    
+    def test_save_to_file_extra_args(self):
+        with self.assertRaises(TypeError):
+            Square.save_to_file([], 1)
+
+    def tearDown(self):
+        try:
+            os.remove("Square.json")
+        except:
+            pass
+    
+class TestSquare_load_from_file(unittest.TestCase):
+    """Unit tests for testing load_from_file method of Square class."""
+    def test_load_from_file(self):
+        s1 = Square(1, 2, 3, 4)
+        s2 = Square(2, 3, 4, 5)
+        Square.save_to_file([s1, s2])
+        objs = Square.load_from_file()
+        self.assertIsInstance(objs, list)
+        self.assertIsInstance(objs[0], Square)
+        self.assertEqual(str(objs[0]), str(s1))
+        self.assertEqual(str(objs[1]), str(s2))
+    
+    def test_load_from_file_empty(self):
+        Square.save_to_file([])
+        objs = Square.load_from_file()
+        self.assertEqual(objs, [])
+    
+    def test_load_from_file_None(self):
+        Square.save_to_file(None)
+        objs = Square.load_from_file()
+        self.assertEqual(objs, [])
+    
+    def test_load_from_file_extra_args(self):
+        with self.assertRaises(TypeError):
+            Square.load_from_file(1)
+    
+    def tearDown(self):
+        try:
+            os.remove("Square.json")
+        except:
+            pass
+
+
                 
