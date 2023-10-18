@@ -62,7 +62,7 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(objs, list)
         self.assertIsInstance(objs[0], Base)
         self.assertEqual(objs[0].id, 1)
-    
+
 
 if __name__ == '__main__':
     unittest.main()
