@@ -11,6 +11,37 @@ class TestRectangle_init(unittest.TestCase):
     def test_no_arg(self):
         with self.assertRaises(TypeError):
             r = Rectangle()
+    
+    def test_wrong_arg(self):
+        with self.assertRaises(TypeError):
+            r = Rectangle("1", 2)
+        
+        with self.assertRaises(TypeError):
+            r = Rectangle(1, "2")
+
+        with self.assertRaises(TypeError):
+            r = Rectangle(1, 2, "3")
+        
+        with self.assertRaises(TypeError):
+            r = Rectangle(1, 2, 3, "4")
+
+        with self.assertRaises(ValueError):
+            r = Rectangle(-1, 2)
+
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, -2)
+
+        with self.assertRaises(ValueError):
+            r = Rectangle(0, 2)
+        
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 0)
+
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 2, -3)
+        
+        with self.assertRaises(ValueError):
+            r = Rectangle(1, 2, 3, -4)
 
     def test_one_arg(self):
         with self.assertRaises(TypeError):

@@ -40,7 +40,9 @@ class TestBase_to_json_string(unittest.TestCase):
         r1 = Rectangle(10, 7, 2, 8)
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
+        json_dictionary2 = Base.to_json_string([ { 'id': 12 }])
         self.assertEqual(type(json_dictionary), str)
+        self.assertEqual(type(json_dictionary2), str)
 
     def test_to_json_string_empty(self):
         json_dictionary = Base.to_json_string([])
@@ -50,6 +52,7 @@ class TestBase_to_json_string(unittest.TestCase):
         json_dictionary = Base.to_json_string(None)
         self.assertEqual(json_dictionary, "[]")
 
+
 class TestBase_from_json_string(unittest.TestCase):
     """Unit tests for testing from_json_string method of Base class."""
 
@@ -58,11 +61,14 @@ class TestBase_from_json_string(unittest.TestCase):
         dictionary = r1.to_dictionary()
         json_dictionary = Base.to_json_string([dictionary])
         dictionary_list = Base.from_json_string(json_dictionary)
+        dictionary_list2 = Base.from_json_string('[{ "id": 89 }]')
         self.assertEqual(type(dictionary_list), list)
         self.assertEqual(dictionary_list[0]['x'], 2)
+        self.assertEqual(dictionary_list2[0]['id'], 89)
+        self.assertEqual(type(dictionary_list2), list)
 
     def test_from_json_string_empty(self):
-        dictionary_list = Base.from_json_string("")
+        dictionary_list = Base.from_json_string("[]")
         self.assertEqual(dictionary_list, [])
 
     def test_from_json_string_None(self):
