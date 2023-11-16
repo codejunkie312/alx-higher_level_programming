@@ -1,10 +1,8 @@
 -- lists all shows without the genre `Comedy` in the database `hbtn_0d_tvshows`.
-SELECT DISTINCT `title` FROM `tv_shows` AS show
-LEFT JOIN `tv_show_genres` AS tv ON show.`id` = tv.`show_id`
-LEFT JOIN `tv_genres` AS show_genre ON tv.`genre_id` = show_genre.`id`
-WHERE show.`title` NOT IN (
-    SELECT show.`title` FROM `tv_shows` AS show
-    INNER JOIN `tv_show_genres` AS tv ON show.`id` = tv.`show_id`
-    INNER JOIN `tv_genres` AS show_genre ON tv.`genre_id` = show_genre.`id` WHERE show_genre.`name` = "Comedy"
+SELECT tv.title FROM tv_shows AS tv WHERE NOT EXISTS (
+    SELECT 1 
+    FROM tv_show_genres AS tsg 
+    INNER JOIN tv_genres AS tg ON tsg.genre_id = tg.id 
+    WHERE tg.name = 'Comedy' AND tsg.show_id = tv.id
 )
-ORDER BY show.`title`;
+ORDER BY tv.title ASC;
