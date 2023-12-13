@@ -7,5 +7,5 @@ const nbOccurences = (list, searchElement) => {
     }
   }
   return count;
-}
+};
 module.exports.nbOccurences = nbOccurences;
